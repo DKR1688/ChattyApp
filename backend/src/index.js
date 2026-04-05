@@ -35,6 +35,15 @@ app.use(
   })
 );
 
+// Public health routes for quick deployment checks
+app.get("/", (req, res) => {
+  res.status(200).json({ status: "ok", service: "chattyapp-backend" });
+});
+
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
